@@ -1,0 +1,15 @@
+// Education identity config
+/*
+resource "vault_generic_endpoint" "education_ident_config_bob" {
+  provider = vault.education_namespace
+  path                 = "identity/entity"
+  ignore_absent_fields = true
+
+  data_json = <<EOT
+{
+  "name": "Bob Smith",
+  "policies": "edu-admin"
+}
+EOT
+}
+*/
