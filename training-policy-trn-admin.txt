@@ -1,11 +1,11 @@
-resource "vault_policy" "edu_admin" {
-  provider = vault.education_namespace
-  name     = "edu-admin"
+resource "vault_policy" "training_admin" {
+  provider = vault.training_namespace
+  name = "training-admin"
 
   policy = <<EOT
-#################
-### EDU ADMIN ###
-#################
+######################
+### TRAINING ADMIN ###
+######################
 
 # Manage namespaces
 path "sys/namespaces/*" {
@@ -19,7 +19,7 @@ path "sys/policies/acl/*" {
 
 # List policies
 path "sys/policies/acl" {
-   capabilities = ["list"]
+  capabilities = ["list"]
 }
 
 # Enable and manage secrets engines
@@ -32,18 +32,8 @@ path "sys/mounts" {
   capabilities = [ "read" ]
 }
 
-# Create and manage entities and groups
-path "identity/*" {
-   capabilities = ["create", "read", "update", "delete", "list"]
-}
-
-# Manage tokens
-path "auth/token/*" {
-   capabilities = ["create", "read", "update", "delete", "list", "sudo"]
-}
-
-# Manage secrets at 'edu-secret'
-path "edu-secret/*" {
+# Manage secrets at 'team-secret'
+path "team-secret/*" {
    capabilities = ["create", "read", "update", "delete", "list"]
 }
 EOT

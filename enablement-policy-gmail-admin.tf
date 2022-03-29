@@ -1,10 +1,10 @@
-resource "vault_policy" "edu_admin" {
-  provider = vault.education_namespace
-  name     = "edu-admin"
+resource "vault_policy" "gmail_admin" {
+  provider = vault.enablement_namespace
+  name     = "gmail-admin"
 
   policy = <<EOT
 #################
-### EDU ADMIN ###
+### GMAIL ADMIN ###
 #################
 
 # Manage namespaces

@@ -1,0 +1,16 @@
+resource "vault_identity_oidc_key" "enablement_oidc_key" {
+  provider  = vault.enablement_namespace
+  name      = "enablement_oidc_key"
+  algorithm = "RS256"
+}
+
+resource "vault_identity_oidc_role" "role" {
+  provider  = vault.enablement_namespace
+  name      = "gmail"
+  key       = vault_identity_oidc_key.enablement_oidc_key.name
+}
+
+resource "vault_identity_oidc_key_allowed_client_id" "role" {
+  key_name          = vault_identity_oidc_key.key.name
+  allowed_client_id = vault_identity_oidc_role.role.client_id
+}

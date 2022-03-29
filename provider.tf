@@ -11,3 +11,8 @@ provider "vault" {
   namespace = "education/training"
   alias     = "training_namespace"
 }
+
+provider "vault" {
+  namespace = "enablement"
+  alias     = "enablement_namespace"
+}

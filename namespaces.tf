@@ -5,6 +5,12 @@ resource "vault_namespace" "education" {
   path     = "education"
 }
 
+// Root namespace - enablement
+resource "vault_namespace" "enablement" {
+  provider = vault.root_namespace
+  path     = "enablement"
+}
+
 // Child namespaces
 resource "vault_namespace" "training" {
   provider = vault.education_namespace
